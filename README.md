@@ -1,16 +1,99 @@
-# React + Vite
+# Sagnika Bhol - Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern, responsive personal developer portfolio showcasing software engineering projects, AI/ML implementations, technical skills, and experience. Built with performance, accessibility, and clean design in mind.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌟 Overview
 
-## React Compiler
+This portfolio website serves as an interactive hub highlighting:
+- **Hero Section**: Dynamic typewriter role introduction with quick access to social profiles and resume.
+- **About Me**: Academic background, journey in Computer Science and Applications, and technical interests.
+- **Tech Stack**: Categorized skill matrix covering Core Languages, AI / Machine Learning, Data Analytics, and Development Tools.
+- **Experience & Education**: Timeline detailing education (MCA) and software/AI engineering development experience.
+- **Featured Projects**: Showcase of key projects including AI/ML systems, computer vision models, interactive dashboards, and full-stack software with direct GitHub repository links.
+- **Interactive AI Chatbot Assistant**: Embedded conversational assistant to answer visitor questions regarding background, skills, and projects.
+- **Contact & Connect**: Direct messaging form and quick-copy contact details.
+- **Theme Support**: Seamless dark and light mode toggle with persistent preference state.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Core Technologies
+- **Frontend Framework**: [React 19](https://react.dev/)
+- **Build Tool & Bundler**: [Vite](https://vite.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) & PostCSS
+- **Linter**: [Oxlint](https://oxc.rs/)
+
+### Featured Engineering Skills Showcased
+- **Languages**: Python, Java, JavaScript, SQL, HTML/CSS
+- **AI & Machine Learning**: TensorFlow, PyTorch, Keras, OpenCV, Scikit-learn
+- **Data & Analytics**: Pandas, NumPy, Matplotlib, Plotly, Streamlit
+- **Tools & Platforms**: Git, GitHub, VS Code, Linux
+
+---
+
+## 🚀 Local Development
+
+Follow these steps to run the portfolio locally on your machine.
+
+### Prerequisites
+
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (version 18 or higher recommended)
+- [npm](https://www.npmjs.com/) (bundled with Node.js) or another package manager (yarn / pnpm)
+- [Git](https://git-scm.com/)
+
+### Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Sagnikabhol/Portfolio.git
+   cd Portfolio
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the local development server:**
+   ```bash
+   npm run dev
+   ```
+   Open your browser and navigate to the local URL shown in your terminal (typically `http://localhost:5173/`).
+
+### Available Scripts
+
+| Command | Description |
+| :--- | :--- |
+| `npm run dev` | Starts the Vite development server with Hot Module Replacement (HMR). |
+| `npm run build` | Compiles and bundles production-ready assets into the `dist/` directory. |
+| `npm run preview` | Locally serves the production build from `dist/` for verification. |
+| `npm run lint` | Runs Oxlint to inspect code for potential issues and style violations. |
+
+---
+
+## 📁 Project Structure
+
+```text
+├── public/              # Static public assets
+├── src/
+│   ├── assets/          # Images, SVGs, and visual assets
+│   ├── components/      # Modular React components (Hero, About, Projects, etc.)
+│   ├── App.css          # App-level styling
+│   ├── App.jsx          # Root application component with layout and theme logic
+│   ├── index.css        # Tailwind and global styles
+│   └── main.jsx         # Application entry point
+├── package.json         # Project dependencies and npm scripts
+├── vite.config.js       # Vite configuration
+└── README.md            # Project documentation
+```
+
+---
+
+## 📬 Contact & Connect
+
+- **GitHub**: [@Sagnika24](https://github.com/Sagnika24) / [@Sagnikabhol](https://github.com/Sagnikabhol)
+- **LinkedIn**: [Sagnika Bhol](https://www.linkedin.com/in/sagnika-bhol)
