@@ -39,8 +39,8 @@ function useScrollReveal(options = { threshold: 0.15, rootMargin: '0px 0px -40px
  * Animated number counter component that counts up to the target value
  * when triggered by the IntersectionObserver.
  */
-function AnimatedCounter({ target, suffix = '', duration = 1600, startAnimation }) {
-  const [count, setCount] = useState(0);
+function AnimatedCounter({ target, suffix = '', duration = 1600, startAnimation, decimals = 0 }) {
+  const [count, setCount] = useState(decimals > 0 ? (0).toFixed(decimals) : 0);
 
   useEffect(() => {
     if (!startAnimation) return;
@@ -53,18 +53,19 @@ function AnimatedCounter({ target, suffix = '', duration = 1600, startAnimation 
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
       // Cubic ease-out curve for smooth decelerating counter
       const easeOut = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(easeOut * target));
+      const current = easeOut * target;
+      setCount(decimals > 0 ? current.toFixed(decimals) : Math.floor(current));
 
       if (progress < 1) {
         frameId = requestAnimationFrame(step);
       } else {
-        setCount(target);
+        setCount(decimals > 0 ? target.toFixed(decimals) : target);
       }
     };
 
     frameId = requestAnimationFrame(step);
     return () => cancelAnimationFrame(frameId);
-  }, [startAnimation, target, duration]);
+  }, [startAnimation, target, duration, decimals]);
 
   return (
     <span>
@@ -82,12 +83,36 @@ export default function About() {
 
   const stats = [
     {
-      value: 16,
-      suffix: '+',
-      label: 'Projects',
-      sublabel: 'Completed & Deployed',
+      value: 8.40,
+      decimals: 2,
+      suffix: '',
+      label: 'MCA CGPA',
+      sublabel: 'C. V. Raman Global University',
       icon: (
         <svg className="w-6 h-6 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M12 14l9-5-9-5-9 5 9 5z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+          />
+        </svg>
+      ),
+    },
+    {
+      value: 16,
+      decimals: 0,
+      suffix: '+',
+      label: 'Projects',
+      sublabel: 'Academic & Self-Built',
+      icon: (
+        <svg className="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -98,33 +123,18 @@ export default function About() {
       ),
     },
     {
-      value: 6,
-      suffix: '+',
-      label: 'Technologies',
-      sublabel: 'Languages & Frameworks',
-      icon: (
-        <svg className="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-          />
-        </svg>
-      ),
-    },
-    {
-      value: 2,
-      suffix: '+',
-      label: 'Years Learning',
-      sublabel: 'Continuous Growth & Code',
+      value: 8.17,
+      decimals: 2,
+      suffix: '',
+      label: 'B.Sc. CS CGPA',
+      sublabel: 'Nigamananda Mahila Mahavidyalaya',
       icon: (
         <svg className="w-6 h-6 text-fuchsia-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
           />
         </svg>
       ),
@@ -209,7 +219,7 @@ export default function About() {
           </div>
 
           <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 dark:text-slate-400 pt-2">
-            A glimpse into my background, core expertise, and engineering philosophy.
+            A glimpse into my academic background, technical foundation, and learning journey as a fresher.
           </p>
         </div>
 
@@ -226,27 +236,35 @@ export default function About() {
 
             <div className="space-y-5 text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
               <p>
-                Hello! I'm <strong className="font-semibold text-slate-950 dark:text-white">Sagnika Bhol</strong>, a dedicated{' '}
-                <span className="font-semibold text-violet-600 dark:text-violet-400">Software Engineer</span> with a deep passion for{' '}
-                <span className="font-semibold text-purple-600 dark:text-purple-400">Artificial Intelligence</span>,{' '}
-                <span className="font-semibold text-fuchsia-600 dark:text-fuchsia-400">Machine Learning</span>, and modern{' '}
-                <span className="font-semibold text-slate-950 dark:text-white">Python development</span>. I thrive on the boundary between theoretical concepts and practical, high-impact software solutions.
+                Hello! I'm <strong className="font-semibold text-slate-950 dark:text-white">Sagnika Bhol</strong>, an aspiring{' '}
+                <span className="font-semibold text-violet-600 dark:text-violet-400">Software Engineer</span> with a completed{' '}
+                <span className="font-semibold text-purple-600 dark:text-purple-400">Master of Computer Applications (MCA)</span> from{' '}
+                <strong className="text-slate-950 dark:text-white font-medium">C. V. Raman Global University, Odisha</strong> (CGPA: <strong className="text-violet-600 dark:text-violet-400 font-semibold">8.40</strong>) and a{' '}
+                <span className="font-semibold text-fuchsia-600 dark:text-fuchsia-400">B.Sc. in Computer Science Honours</span> from{' '}
+                <strong className="text-slate-950 dark:text-white font-medium">Nigamananda Mahila Mahavidyalaya</strong> (CGPA: <strong className="text-purple-600 dark:text-purple-400 font-semibold">8.17</strong>).
               </p>
 
               <p>
-                Over the past several years, I have focused on architecting and training real-world applications using frameworks like{' '}
+                Currently, I am undergoing professional training in{' '}
+                <strong className="text-slate-950 dark:text-white font-semibold">Python Full Stack Development at KodNest</strong>, honing hands-on skills in Python programming, full-stack application development, and software engineering workflows.
+              </p>
+
+              <p>
+                Throughout my academic journey, I have built strong foundations in core Computer Science principles—including{' '}
+                <strong className="text-slate-900 dark:text-white font-medium">Database Management Systems (DBMS), Operating Systems, Computer Networks, Web Technologies, and Software Engineering</strong>.
+                I bridge academic knowledge with practical engineering by building independent software and AI/ML applications using frameworks like{' '}
                 <code className="px-2 py-0.5 rounded text-sm font-mono bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
                   TensorFlow
-                </code>{' '}
-                and{' '}
-                <code className="px-2 py-0.5 rounded text-sm font-mono bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
-                  Keras
                 </code>
-                , creating intelligent data analytics pipelines, and building clean, modular full-stack applications. Whether it's structuring intuitive user interfaces, tuning deep learning models, or wrangling multidimensional data, I emphasize scalable code, performance, and craftsmanship.
+                ,{' '}
+                <code className="px-2 py-0.5 rounded text-sm font-mono bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
+                  OpenCV
+                </code>
+                , Python, and Java.
               </p>
 
               <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base pt-1">
-                When I'm not writing code or experimenting with neural nets, you can find me exploring cutting-edge AI research papers, collaborating on open-source initiatives, and solving challenging algorithmic puzzles.
+                I am an energetic, quick learner eager to take on an <strong className="text-purple-600 dark:text-purple-400 font-semibold">Associate Software Engineer / SDE</strong> or <strong className="text-violet-600 dark:text-violet-400 font-semibold">AI/ML role</strong>, where I can apply my problem-solving abilities, learn from experienced mentors, and contribute to meaningful products.
               </p>
             </div>
 
@@ -256,12 +274,12 @@ export default function About() {
                 Core Strengths:
               </span>
               {[
-                'Python & OOP',
+                'Python Full Stack (KodNest)',
+                'Software Engineering & OOP',
+                'Python & Java Development',
                 'Deep Learning / TensorFlow',
-                'Data Visualization',
-                'Full-Stack Architecture',
-                'Clean Code Practices',
-                'Continuous Learning',
+                'DBMS & SQL',
+                'Quick Learner & Fresher',
               ].map((strength) => (
                 <span
                   key={strength}
@@ -297,6 +315,7 @@ export default function About() {
                 <div className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 dark:from-violet-400 dark:via-purple-400 dark:to-fuchsia-400 bg-clip-text text-transparent">
                   <AnimatedCounter
                     target={stat.value}
+                    decimals={stat.decimals || 0}
                     suffix={stat.suffix}
                     duration={1500 + index * 200}
                     startAnimation={statsVisible}
@@ -324,10 +343,10 @@ export default function About() {
           {/* Subsection Title */}
           <div className="text-center space-y-2 mb-12">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-white">
-              What I Do
+              Areas of Study &amp; Focus
             </h3>
             <p className="text-slate-600 dark:text-slate-400 text-base max-w-xl mx-auto">
-              Specialized domains where I craft innovative, high-performance software solutions.
+              Core academic and technical domains where I concentrate my coursework, software engineering, and project building.
             </p>
           </div>
 

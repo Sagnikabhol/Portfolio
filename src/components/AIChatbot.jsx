@@ -12,7 +12,7 @@ export default function AIChatbot() {
     {
       id: 'welcome-msg',
       sender: 'bot',
-      text: "Hi! 👋 I'm Sagnika's AI assistant. Ask me anything about her projects, skills, or experience!",
+      text: "Hi! 👋 I'm Sagnika's AI assistant. Ask me anything about her academic journey, skills, or projects!",
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
     },
   ]);
@@ -25,12 +25,12 @@ export default function AIChatbot() {
   const quickQuestions = [
     'What are her skills?',
     'Tell me about her projects',
-    'How to contact her?',
+    'What is her education?',
   ];
 
   // System context prompt for Gemini
   const SYSTEM_PROMPT =
-    "You are an AI assistant on Sagnika Bhol's portfolio website. Sagnika is a Software Engineer specializing in Python and AI/ML. She has built projects like Riosa Voice AI, Face Emotion Recognition, Sales Analytics Dashboard, and more. She is skilled in Python, TensorFlow, Keras, PyTorch, SQL, Git, and Java. Answer questions about her work, skills, and experience professionally and helpfully. Keep responses concise.";
+    "You are an AI assistant on Sagnika Bhol's portfolio website. Sagnika is an aspiring Software Engineer specializing in Python, Java, and AI/ML. She is currently undergoing professional training in Python Full Stack Development at KodNest (In Progress). She completed her Master of Computer Applications (MCA) at C. V. Raman Global University, Odisha (2024–2026, 8.40 CGPA), and her B.Sc. in Computer Science Honours at Nigamananda Mahila Mahavidyalaya (2021–2024, 8.17 CGPA). She did her Higher Secondary (+2 Science) from Regional Higher Secondary School, CHSE Odisha (2021) and Class 10 from Trilochaneswar Nodal High School, BSE Odisha (2019). She has a solid grounding in Computer Science fundamentals (DBMS, Operating Systems, Computer Networks, Web Technologies, Software Engineering) and hands-on projects like Riosa Voice AI, Face Emotion Recognition, and Sales Analytics Dashboard. She is skilled in Python, Full-Stack Web Development, TensorFlow, Keras, OpenCV, PyTorch, SQL, Git, and Java, and is seeking Associate Software Engineer / SDE and AI/ML roles. Answer questions about her academic journey, skills, and projects enthusiastically, honestly, professionally, and concisely.";
 
   // Scroll to bottom when messages update or loading starts
   useEffect(() => {
@@ -84,7 +84,31 @@ export default function AIChatbot() {
 
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-    // Check for API key availability
+    // Helper for local knowledge-base fallback response if API is unavailable or rate-limited
+    const getLocalFallbackAnswer = (query) => {
+      const q = query.toLowerCase();
+      if (q.includes('skill') || q.includes('stack') || q.includes('tech') || q.includes('language') || q.includes('framework')) {
+        return "Sagnika's core technical stack includes:\n- **Languages**: Python, Java, JavaScript, SQL, HTML/CSS\n- **Full-Stack Training**: Python Full Stack Development at KodNest (In Progress)\n- **AI & ML**: TensorFlow, Keras, OpenCV, PyTorch, Scikit-learn\n- **Data Analytics**: Pandas, NumPy, Matplotlib, Plotly, Streamlit\n- **Tools**: Git, GitHub, VS Code, Linux";
+      }
+      if (q.includes('training') || q.includes('kodnest') || q.includes('course')) {
+        return "Sagnika is currently undergoing professional training:\n- **Program**: Python Full Stack Development\n- **Institute**: KodNest\n- **Status**: In Progress\n- **Focus**: Python programming, full-stack web development, and hands-on application building.";
+      }
+      if (q.includes('project') || q.includes('work') || q.includes('build') || q.includes('portfolio') || q.includes('repo')) {
+        return "Sagnika has built several featured projects:\n1. **Riosa Voice AI**: Intelligent voice-controlled desktop assistant built with Python.\n2. **Face Emotion Recognition**: Real-time facial expression classifier using TensorFlow, Keras, and OpenCV.\n3. **Sales Analytics Dashboard**: Dynamic data dashboard with Streamlit and Plotly.\n4. **Smart Vaccination Management**: Java/JSP-based management system.\n5. **Food Image Classification**: MobileNetV2 transfer learning model.\n\nCheck out the Projects section above for live repository links!";
+      }
+      if (q.includes('education') || q.includes('study') || q.includes('college') || q.includes('school') || q.includes('university') || q.includes('mca') || q.includes('degree') || q.includes('academic') || q.includes('cgpa') || q.includes('10th') || q.includes('12th')) {
+        return "Here is Sagnika's complete education & training background:\n\n1. **Python Full Stack Development (Training - In Progress)**\n   - **Institute**: KodNest\n   - **Focus**: Python programming & application building\n\n2. **Master of Computer Applications (MCA)** (2024–2026)\n   - **University**: C. V. Raman Global University, Odisha\n   - **CGPA**: 8.40 (Completed)\n\n3. **Bachelor of Science in Computer Science Honours (B.Sc.)** (2021–2024)\n   - **College**: Nigamananda Mahila Mahavidyalaya\n   - **CGPA**: 8.17\n\n4. **Higher Secondary (+2 Science)** (2019–2021)\n   - **School**: Regional Higher Secondary School\n   - **Board**: Council of Higher Secondary Education, Odisha (CHSE Odisha)\n\n5. **Secondary School Certificate (Class 10)** (2019)\n   - **School**: Trilochaneswar Nodal High School\n   - **Board**: Board of Secondary Education, Odisha (BSE Odisha)";
+      }
+      if (q.includes('contact') || q.includes('email') || q.includes('hire') || q.includes('reach') || q.includes('linkedin') || q.includes('github')) {
+        return "You can get in touch with Sagnika directly:\n- **Email**: [sagnikariana@gmail.com](mailto:sagnikariana@gmail.com)\n- **LinkedIn**: [linkedin.com/in/sagnika-bhol](https://www.linkedin.com/in/sagnika-bhol)\n- **GitHub**: [github.com/Sagnikabhol](https://github.com/Sagnikabhol)";
+      }
+      if (q.includes('experience') || q.includes('fresher') || q.includes('role') || q.includes('job')) {
+        return "Sagnika is a qualified graduate with an **MCA (8.40 CGPA)** and **B.Sc. in Computer Science Honours (8.17 CGPA)**, currently undergoing **Python Full Stack Development training at KodNest**, and actively seeking **Associate Software Engineer / SDE** and **AI/ML** roles.";
+      }
+      return "Sagnika holds an MCA from C. V. Raman Global University (8.40 CGPA) and B.Sc. in Computer Science Honours from Nigamananda Mahila Mahavidyalaya (8.17 CGPA), currently training in Python Full Stack Development at KodNest. Feel free to ask about her skills, projects, or education!";
+    };
+
+    // If API key is missing, use intelligent local fallback
     if (!apiKey) {
       setTimeout(() => {
         setMessages((prev) => [
@@ -92,12 +116,12 @@ export default function AIChatbot() {
           {
             id: `bot-${Date.now()}`,
             sender: 'bot',
-            text: 'AI chatbot is currently offline. Please set up a Gemini API key to enable it.',
+            text: getLocalFallbackAnswer(trimmed),
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
           },
         ]);
         setIsLoading(false);
-      }, 500);
+      }, 400);
       return;
     }
 
@@ -105,7 +129,7 @@ export default function AIChatbot() {
       // Build conversation turns starting strictly with user turn as required by Gemini API
       const conversationTurns = [];
       for (const msg of [...messages, userMessage]) {
-        if (msg.id === 'welcome-msg') continue; // Exclude initial static greeting from request history
+        if (msg.id === 'welcome-msg') continue;
         if (msg.sender === 'user') {
           conversationTurns.push({
             role: 'user',
@@ -119,7 +143,6 @@ export default function AIChatbot() {
         }
       }
 
-      // Ensure at least the current user message is sent
       if (conversationTurns.length === 0) {
         conversationTurns.push({
           role: 'user',
@@ -127,34 +150,55 @@ export default function AIChatbot() {
         });
       }
 
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            systemInstruction: {
-              parts: [{ text: SYSTEM_PROMPT }],
-            },
-            contents: conversationTurns,
-            generationConfig: {
-              temperature: 0.7,
-              maxOutputTokens: 600,
-            },
-          }),
-        }
-      );
+      // Candidate models in order of availability and responsiveness
+      const candidateModels = [
+        'gemini-3.1-flash-lite',
+        'gemini-3.8-flash',
+        'gemini-3.5-flash-lite',
+        'gemini-flash-latest',
+      ];
 
-      if (!response.ok) {
-        throw new Error(`API error with status ${response.status}`);
+      let botResponseText = null;
+
+      for (const modelName of candidateModels) {
+        try {
+          const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                systemInstruction: {
+                  parts: [{ text: SYSTEM_PROMPT }],
+                },
+                contents: conversationTurns,
+                generationConfig: {
+                  temperature: 0.7,
+                  maxOutputTokens: 600,
+                },
+              }),
+            }
+          );
+
+          if (response.ok) {
+            const data = await response.json();
+            const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (text) {
+              botResponseText = text;
+              break;
+            }
+          }
+        } catch {
+          // If this model fails, continue to next candidate
+        }
       }
 
-      const data = await response.json();
-      const botResponseText =
-        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
-        "I'm sorry, I couldn't generate a response. Please feel free to ask again or check Sagnika's projects above!";
+      // If all API models are temporarily unavailable or rate-limited, use local knowledge base
+      if (!botResponseText) {
+        botResponseText = getLocalFallbackAnswer(trimmed);
+      }
 
       setMessages((prev) => [
         ...prev,
@@ -166,15 +210,14 @@ export default function AIChatbot() {
         },
       ]);
     } catch (err) {
-      console.error('Error contacting Gemini API:', err);
+      console.error('Chatbot error:', err);
       setMessages((prev) => [
         ...prev,
         {
-          id: `bot-err-${Date.now()}`,
+          id: `bot-${Date.now()}`,
           sender: 'bot',
-          text: "I'm having trouble connecting right now. Please check your internet connection or try again in a moment.",
+          text: getLocalFallbackAnswer(trimmed),
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-          isError: true,
         },
       ]);
     } finally {

@@ -10,58 +10,93 @@ export default function Experience() {
   const [visibleEntries, setVisibleEntries] = useState({});
   const entryRefs = useRef([]);
 
-  // Timeline entries as requested
+  // Timeline entries focused on education and academic journey for a fresher
+  // Authentic educational qualifications & professional training timeline
   const experiences = [
     {
-      id: 'education',
+      id: 'training-kodnest',
+      icon: '🐍',
+      role: 'Python Full Stack Development',
+      subtitle: 'KodNest',
+      period: 'In Progress',
+      badge: 'Training',
+      badgeColor: 'from-emerald-500 to-teal-600',
+      description:
+        'Undergoing specialized technical training in Python full-stack engineering, scalable application architecture, and modern software development practices.',
+      highlights: [
+        'Currently developing Python programming and full-stack development skills',
+        'Learning concepts relevant to software development and application building',
+        'Hands-on implementation of responsive web interfaces, backend APIs, and database integration',
+      ],
+      tags: ['Python', 'Full Stack Development', 'KodNest', 'Web Development', 'In Progress'],
+    },
+    {
+      id: 'mca',
       icon: '🎓',
-      role: 'B.Tech / Engineering Student',
-      subtitle: 'Computer Science & Engineering',
-      period: '2023 - Present',
-      badge: 'Academic Foundation',
+      role: 'Master of Computer Applications (MCA)',
+      subtitle: 'C. V. Raman Global University, Odisha',
+      period: '2024 - 2026',
+      badge: 'CGPA: 8.40',
       badgeColor: 'from-violet-500 to-indigo-600',
       description:
-        'Studying Computer Science, building AI/ML projects, participating in hackathons.',
+        'Completed Master of Computer Applications with distinction, specializing in core computer science, software engineering principles, and applied development.',
       highlights: [
-        'Mastering core foundations of Data Structures, Algorithms, DBMS, and OS',
-        'Collaborating in inter-college hackathons designing rapid software solutions',
-        'Bridging academic theory with practical, end-to-end machine learning engineering',
+        'Academic Excellence: Achieved an 8.40 CGPA in MCA',
+        'University: C. V. Raman Global University, Odisha (Status: Completed)',
+        'Core Focus: Database Management Systems (DBMS), Operating Systems, Computer Networks, and Software Engineering',
       ],
-      tags: ['Computer Science', 'AI/ML', 'Hackathons', 'Data Structures', 'Python'],
+      tags: ['MCA', 'CGPA: 8.40', 'C. V. Raman Global University', 'Java', 'Python', 'DBMS', 'Software Engineering'],
     },
     {
-      id: 'aiml-developer',
-      icon: '🏆',
-      role: 'Self-Taught AI/ML Developer',
-      subtitle: 'Deep Learning & Applied Computer Vision',
-      period: '2024 - Present',
-      badge: 'Applied AI & Projects',
+      id: 'bsc',
+      icon: '💻',
+      role: 'B.Sc. in Computer Science Honours',
+      subtitle: 'Nigamananda Mahila Mahavidyalaya',
+      period: '2021 - 2024',
+      badge: 'CGPA: 8.17',
       badgeColor: 'from-purple-500 to-fuchsia-600',
       description:
-        'Built face emotion recognition, image classification, voice AI assistant projects using TensorFlow and deep learning.',
+        'Three-year undergraduate degree with Honours in Computer Science, building rigorous foundations in programming, relational databases, and computational logic.',
       highlights: [
-        'Engineered real-time Face Emotion Recognition using CNNs, OpenCV, and webcam feeds',
-        'Trained and evaluated deep neural networks for multi-class Image Classification',
-        'Architected a voice-driven AI desktop assistant integrating speech recognition and NLP',
+        'Graduated with 8.17 CGPA (Computer Science Honours)',
+        'College: Nigamananda Mahila Mahavidyalaya (2021–2024)',
+        'Built strong foundation in Object-Oriented Programming (OOP), Relational Databases, and Computer Science concepts',
       ],
-      tags: ['TensorFlow', 'Keras', 'OpenCV', 'PyTorch', 'Computer Vision', 'Deep Learning'],
+      tags: ['B.Sc. CS Hons', 'CGPA: 8.17', 'Nigamananda Mahila Mahavidyalaya', 'Computer Science', 'OOP', 'SQL'],
     },
     {
-      id: 'open-source',
-      icon: '💼',
-      role: 'Open Source Contributor',
-      subtitle: 'Ecosystem & Community Development',
-      period: '2025 - Present',
-      badge: 'Community & Tooling',
+      id: 'higher-secondary',
+      icon: '🔬',
+      role: 'Higher Secondary Education (+2 Science)',
+      subtitle: 'Regional Higher Secondary School • CHSE Odisha',
+      period: '2019 - 2021',
+      badge: 'CHSE Odisha',
       badgeColor: 'from-fuchsia-500 to-pink-600',
       description:
-        'Contributing to open-source projects, building personal tools, and sharing knowledge on GitHub.',
+        'Completed Higher Secondary Certificate (+2) in the Science stream under the Council of Higher Secondary Education, Odisha.',
       highlights: [
-        'Submitting PRs, fixing issues, and expanding documentation in open-source repositories',
-        'Creating modular utility tools and automated scripts to streamline data science tasks',
-        'Sharing clean codebases, reproducible Jupyter notebooks, and tech writeups',
+        'Stream: Science (Higher Secondary / Class 12)',
+        'School: Regional Higher Secondary School',
+        'Board: Council of Higher Secondary Education, Odisha (CHSE Odisha) • Year: 2021',
       ],
-      tags: ['Open Source', 'GitHub', 'Git', 'Python Utilities', 'Developer Tools'],
+      tags: ['Class 12', 'Science Stream', 'CHSE Odisha', 'Regional Higher Secondary School'],
+    },
+    {
+      id: 'secondary',
+      icon: '🏫',
+      role: 'Secondary School Certificate (Class 10)',
+      subtitle: 'Trilochaneswar Nodal High School • BSE Odisha',
+      period: '2019',
+      badge: 'BSE Odisha',
+      badgeColor: 'from-pink-500 to-rose-600',
+      description:
+        'Completed Secondary School Certificate examination under the Board of Secondary Education, Odisha.',
+      highlights: [
+        'Qualification: Secondary School Certificate / Class 10',
+        'School: Trilochaneswar Nodal High School',
+        'Board: Board of Secondary Education, Odisha (BSE Odisha) • Year: 2019',
+      ],
+      tags: ['Class 10', 'BSE Odisha', 'Trilochaneswar Nodal High School', 'Secondary Education'],
     },
   ];
 
@@ -116,14 +151,14 @@ export default function Experience() {
       <div className="text-center mb-16 sm:mb-20">
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-500/20 mb-4 backdrop-blur-sm shadow-sm">
           <span className="w-2 h-2 rounded-full bg-purple-500 animate-ping" />
-          Milestones & Journey
+          Education &amp; Professional Training
         </div>
 
         {/* Section Title */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-          Experience &{' '}
+          Education &amp;{' '}
           <span className="bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
-            Education
+            Training
           </span>
         </h2>
 
@@ -136,8 +171,7 @@ export default function Experience() {
 
         {/* Subtitle */}
         <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          My academic trajectory, hands-on deep learning development, and active engagement with the
-          global open-source community.
+          My technical training, academic qualifications, and continuous learning journey in software development.
         </p>
       </div>
 

@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 
 export default function Hero() {
   const roles = [
+    'Associate Software Engineer',
     'Software Engineer',
-    'AI/ML Enthusiast',
-    'Python Developer',
-    'Problem Solver',
+    'AI / ML Engineer',
+    'Python & Java Developer',
+    'Full-Stack Developer',
   ];
 
   const [roleIndex, setRoleIndex] = useState(0);
@@ -140,8 +141,8 @@ export default function Hero() {
           style={{ animationDelay: '4s' }}
         />
 
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(#a855f7_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.12] dark:opacity-[0.18]" />
+        {/* Subtle study/tech grid pattern */}
+        <div className="absolute inset-0 bg-[radial-gradient(#a855f7_1.25px,transparent_1.25px)] [background-size:28px_28px] opacity-[0.14] dark:opacity-[0.22]" />
 
         {/* Floating Geometric Shapes */}
         <div
@@ -161,24 +162,33 @@ export default function Hero() {
           style={{ animationDelay: '3s' }}
         />
 
-        {/* Floating mini code particles */}
+        {/* Floating study & computer science particles */}
         <span
-          className="absolute top-[14%] right-[28%] font-mono text-xs sm:text-sm text-violet-400/40 dark:text-violet-500/40 select-none anim-float-slow hidden lg:block"
+          className="absolute top-[14%] right-[28%] font-mono text-xs sm:text-sm text-violet-500/50 dark:text-violet-400/50 select-none anim-float-slow hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-violet-500/5 dark:bg-violet-400/10 border border-violet-500/15"
           style={{ animationDelay: '1s' }}
         >
-          &lt;AI /&gt;
+          <span>💻</span>
+          <span>Python &amp; Java</span>
         </span>
         <span
-          className="absolute bottom-[20%] left-[26%] font-mono text-xs sm:text-sm text-purple-400/40 dark:text-purple-500/40 select-none anim-float-reverse hidden lg:block"
+          className="absolute bottom-[22%] left-[24%] font-mono text-xs sm:text-sm text-purple-500/50 dark:text-purple-400/50 select-none anim-float-reverse hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-purple-500/5 dark:bg-purple-400/10 border border-purple-500/15"
           style={{ animationDelay: '2s' }}
         >
-          {'def optimize():'}
+          <span>🎓</span>
+          <span>MCA 2024–2026</span>
         </span>
         <span
-          className="absolute top-[72%] right-[24%] font-mono text-xs sm:text-sm text-fuchsia-400/40 dark:text-fuchsia-500/40 select-none anim-float-slow hidden lg:block"
+          className="absolute top-[68%] right-[22%] font-mono text-xs sm:text-sm text-fuchsia-500/50 dark:text-fuchsia-400/50 select-none anim-float-slow hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-fuchsia-500/5 dark:bg-fuchsia-400/10 border border-fuchsia-500/15"
           style={{ animationDelay: '3.5s' }}
         >
-          {'{ ML: true }'}
+          <span>⚡</span>
+          <span>Web &amp; AI Apps</span>
+        </span>
+        <span
+          className="absolute top-[38%] left-[6%] font-mono text-xs text-indigo-500/40 dark:text-indigo-400/40 select-none anim-float-reverse hidden xl:block"
+          style={{ animationDelay: '4.2s' }}
+        >
+          {'def build():'}
         </span>
       </div>
 
@@ -219,7 +229,7 @@ export default function Hero() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span>Available for Software Engineering & AI/ML Roles</span>
+              <span>Available for Associate Software Engineer &amp; AI/ML Roles</span>
             </div>
 
             {/* Large Animated Greeting */}
@@ -255,10 +265,7 @@ export default function Hero() {
 
             {/* Brief Tagline */}
             <p className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed mx-auto lg:mx-0">
-              Building intelligent solutions with code and creativity. Passionate about{' '}
-              <span className="text-violet-600 dark:text-violet-300 font-medium">AI</span>,{' '}
-              <span className="text-purple-600 dark:text-purple-300 font-medium">Machine Learning</span>, and crafting{' '}
-              <span className="text-slate-900 dark:text-slate-100 font-medium">elegant software</span>.
+              Actively seeking <span className="text-violet-600 dark:text-violet-300 font-semibold">Associate Software Engineer</span> and <span className="text-purple-600 dark:text-purple-300 font-semibold">AI/ML</span> roles. Grounded in <span className="text-fuchsia-600 dark:text-fuchsia-300 font-semibold">Computer Science fundamentals</span>, modern frameworks, and practical software engineering.
             </p>
 
             {/* CTA Buttons */}
@@ -282,8 +289,8 @@ export default function Hero() {
 
               {/* Download Resume */}
               <a
-                href="/resume.pdf"
-                download="Sagnika_Bhol_Resume.pdf"
+                href="/Sagnika_bhol_Associate_Software_Engineer.pdf"
+                download="Sagnika_bhol_Associate_Software_Engineer.pdf"
                 className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-slate-800 dark:text-slate-200 bg-white/80 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800/90 border border-slate-300 dark:border-slate-700/80 hover:border-purple-500 dark:hover:border-purple-400 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950"
               >
                 <svg
@@ -362,13 +369,13 @@ export default function Hero() {
 
               {/* Floating Badge 2: Bottom Right */}
               <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 px-3.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-lg backdrop-blur-md flex items-center gap-2 transform rotate-3 hover:rotate-0 transition-transform">
-                <span className="text-base sm:text-lg">⚡</span>
+                <span className="text-base sm:text-lg">🎓</span>
                 <div className="text-left">
                   <div className="text-[10px] uppercase font-bold text-slate-600 dark:text-slate-400 leading-none">
-                    Passion
+                    Education
                   </div>
                   <div className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
-                    Smart Solutions
+                    MCA (2024–2026)
                   </div>
                 </div>
               </div>

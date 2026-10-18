@@ -18,7 +18,7 @@ export default function TechStack() {
       title: 'Languages',
       badge: 'Core Programming',
       icon: '💻',
-      description: 'Foundational programming and querying languages for core algorithms and systems.',
+      description: 'Foundational programming and querying languages for application development and backend systems.',
       skills: [
         { name: 'Python', icon: '🐍' },
         { name: 'Java', icon: '☕' },
@@ -32,7 +32,7 @@ export default function TechStack() {
       title: 'AI / Machine Learning',
       badge: 'Deep Learning & Vision',
       icon: '🧠',
-      description: 'Specialized neural networks, computer vision algorithms, and predictive modeling frameworks.',
+      description: 'Specialized neural networks, computer vision models, and predictive frameworks.',
       skills: [
         { name: 'TensorFlow', icon: '🤖' },
         { name: 'Keras', icon: '🔬' },

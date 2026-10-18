@@ -10,7 +10,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  const contactEmail = 'sagnikabhol@gmail.com';
+  const contactEmail = 'sagnikariana@gmail.com';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -102,7 +102,7 @@ export default function Contact() {
               Let's create something extraordinary
             </h3>
             <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              I am open to machine learning engineering opportunities, full-stack development, research collaborations, and freelance projects. Reach out via email or connect through social channels!
+              I am actively seeking entry-level Software Engineer / SDE and AI/ML opportunities, internships, and project collaborations. Reach out via email or connect through LinkedIn &amp; GitHub!
             </p>
 
             {/* Email Contact Box with Quick Copy */}
@@ -167,7 +167,7 @@ export default function Contact() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
               </span>
-              <span>Available for new projects & collaborations</span>
+              <span>Actively open to entry-level &amp; fresher opportunities</span>
             </div>
           </div>
 

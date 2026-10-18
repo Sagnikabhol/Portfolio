@@ -139,7 +139,7 @@ export default function Projects() {
                 name: repo.name.replace(/[-_]/g, ' '),
                 description:
                   repo.description ||
-                  'Open source repository and algorithmic solution developed by Sagnika Bhol.',
+                  'Open source software project developed by Sagnika Bhol.',
                 tech: tags.length > 0 ? tags : [repo.language || 'Software'],
                 language: repo.language || 'Code',
                 stars: repo.stargazers_count ?? 0,
