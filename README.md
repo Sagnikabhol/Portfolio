@@ -96,4 +96,4 @@ Ensure you have the following installed:
 ## 📬 Contact & Connect
 
 - **GitHub**:[@Sagnikabhol](https://github.com/Sagnikabhol)
-- **LinkedIn**: [Sagnika Bhol](https://www.linkedin.com/in/sagnika-bhol)
+- **LinkedIn**: [Sagnikabhol](https://www.linkedin.com/in/sagnikabhol)
