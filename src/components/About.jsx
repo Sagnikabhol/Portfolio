@@ -123,11 +123,11 @@ export default function About() {
       ),
     },
     {
-      value: 8.17,
-      decimals: 2,
-      suffix: '',
-      label: 'B.Sc. CS CGPA',
-      sublabel: 'Nigamananda Mahila Mahavidyalaya',
+      value: 10,
+      decimals: 0,
+      suffix: '+',
+      label: 'Technologies',
+      sublabel: 'Languages, ML & Tools',
       icon: (
         <svg className="w-6 h-6 text-fuchsia-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
@@ -239,9 +239,9 @@ export default function About() {
                 Hello! I'm <strong className="font-semibold text-slate-950 dark:text-white">Sagnika Bhol</strong>, an aspiring{' '}
                 <span className="font-semibold text-violet-600 dark:text-violet-400">Software Engineer</span> with a completed{' '}
                 <span className="font-semibold text-purple-600 dark:text-purple-400">Master of Computer Applications (MCA)</span> from{' '}
-                <strong className="text-slate-950 dark:text-white font-medium">C. V. Raman Global University, Odisha</strong> (CGPA: <strong className="text-violet-600 dark:text-violet-400 font-semibold">8.40</strong>) and a{' '}
+                <strong className="text-slate-950 dark:text-white font-medium">C. V. Raman Global University, Odisha</strong> (CGPA: <strong className="text-violet-600 dark:text-violet-400 font-semibold">8.40</strong>) and a foundational degree in{' '}
                 <span className="font-semibold text-fuchsia-600 dark:text-fuchsia-400">B.Sc. in Computer Science Honours</span> from{' '}
-                <strong className="text-slate-950 dark:text-white font-medium">Nigamananda Mahila Mahavidyalaya</strong> (CGPA: <strong className="text-purple-600 dark:text-purple-400 font-semibold">8.17</strong>).
+                <strong className="text-slate-950 dark:text-white font-medium">Nigamananda Mahila Mahavidyalaya</strong>.
               </p>
 
               <p>
