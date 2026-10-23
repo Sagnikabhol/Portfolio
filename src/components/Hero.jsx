@@ -53,7 +53,7 @@ export default function Hero() {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/Sagnika24',
+      url: 'https://github.com/Sagnikabhol',
       icon: (
         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path
